@@ -18,7 +18,7 @@ getDataFromDir <- function(dir="UCI HAR Dataset") {
 
 ## return a DF with only the *mean() and *std() features
 getMeanSD <- function(DF) {
-  DF[,grepl("mean()", colnames(DF), fixed=TRUE) | grepl("std()", colnames(DF), fixed=TRUE)]
+  DF[,grepl("mean()", colnames(DF), fixed=TRUE) | grepl("std()", colnames(DF), fixed=TRUE) | grepl("source", colnames(DF), fixed=TRUE)]
 }
 
 ## Merge the same-length DF1 and DF2 (assuming their order is identical)
@@ -41,7 +41,7 @@ mergeDataFrames <- function (DF1, DF2) {
 }
 
 ## main analysis and transformation function. 
-analyseTransformAndSave <- function() {
+analyseTransformAndSave <- function(data) {
   
   ## Get required data
   data <- getDataFromDir();
